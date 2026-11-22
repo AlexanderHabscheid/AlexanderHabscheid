@@ -8,16 +8,11 @@ I build tools that help AI agents call services, work through tool results, and 
 
 A NATS-backed message bus with request/reply, pub/sub, and traces for retries and timeouts.
 
-[Watch the 45-second walkthrough](https://github.com/AlexanderHabscheid/Orbit#45-second-walkthrough) · [Run the quickstart](https://github.com/AlexanderHabscheid/Orbit#60-second-quickstart)
+[Run the timeout and retry demo](https://github.com/AlexanderHabscheid/Orbit#45-second-walkthrough) · [Run the quickstart](https://github.com/AlexanderHabscheid/Orbit#60-second-quickstart)
 
 ### ARC · Source-backed tool results
 
 ARC is a private Rust project. This preview shows its JSONL runtime finding a record in synthetic data, returning exact fields with a source reference, and recovering the original response.
-
-<picture>
-  <source media="(prefers-reduced-motion: reduce)" srcset="assets/arc-teaser-still.png">
-  <img width="100%" src="assets/arc-teaser.gif" alt="ARC finds item AX-42, returns zero, false, null, and absent as distinct states linked to /items/0, then recovers both original records.">
-</picture>
 
 ### [Velocity](https://github.com/AlexanderHabscheid/velocity) · WebSocket proxy
 
