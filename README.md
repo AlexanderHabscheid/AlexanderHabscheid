@@ -1,38 +1,26 @@
-# Hey, I’m Alexander Habscheid
+# Alexander Habscheid
 
-I build the plumbing that lets AI agents talk to services, move data, and trace what happened. I’m looking for software engineering internships in **backend, infrastructure, and developer tooling**.
+I build tools that help AI agents call services, work through tool results, and recover when things fail. I’m open to software engineering internships in backend, infrastructure, and developer tooling.
 
-## What I’ve shipped
+## Projects
 
-### Orbit · Message bus for AI agents
+### [Orbit](https://github.com/AlexanderHabscheid/Orbit) · Local-first messaging
 
-Orbit gives local agents a NATS-backed way to call services, publish events, and follow a request through retries and timeouts.
+A NATS-backed message bus with request/reply, pub/sub, and traces for retries and timeouts.
 
-[60-second quickstart](https://github.com/AlexanderHabscheid/Orbit#60-second-quickstart) · [RPC implementation](https://github.com/AlexanderHabscheid/Orbit/blob/main/src/rpc_call.ts) · [v0.2.1 release](https://github.com/AlexanderHabscheid/Orbit/releases/tag/v0.2.1)
+[Watch the 45-second walkthrough](https://github.com/AlexanderHabscheid/Orbit#45-second-walkthrough) · [Run the quickstart](https://github.com/AlexanderHabscheid/Orbit#60-second-quickstart)
 
-### Velocity · WebSocket proxy with a latency budget
+### ARC · Source-backed tool results
 
-Velocity adapts its batching window to a p95 latency budget. It ships with a control-plane API and SDKs for TypeScript and Python.
+ARC is a private Rust project. This preview shows its JSONL runtime finding a record in synthetic data, returning exact fields with a source reference, and recovering the original response.
 
-[Quickstart](https://github.com/AlexanderHabscheid/velocity/blob/main/docs/first-15-minutes.md) · [Latency guard](https://github.com/AlexanderHabscheid/velocity/blob/main/src/latency-guard.ts) · [SDKs](https://github.com/AlexanderHabscheid/velocity/tree/main/sdk)
+<picture>
+  <source media="(prefers-reduced-motion: reduce)" srcset="assets/arc-teaser-still.png">
+  <img width="100%" src="assets/arc-teaser.gif" alt="ARC finds item AX-42, returns zero, false, null, and absent as distinct states linked to /items/0, then recovers both original records.">
+</picture>
 
-**Velocity benchmark** · Local run of the synthetic `regional` profile
+### [Velocity](https://github.com/AlexanderHabscheid/velocity) · WebSocket proxy
 
-```text
-Proxy outbound bytes      99.56% lower vs. unoptimized payload bytes
-End-to-end p95 latency     9 ms higher vs. direct WebSocket
-```
+Adaptive batching with a p95 latency budget, an HTTP control plane, and TypeScript and Python SDKs.
 
-<details>
-<summary>Run the benchmark</summary>
-
-Three repeats, seed 42, Apple Silicon and Node.js 26.5.0. The byte metric uses proxy trace counters. The latency metric compares separate direct and proxied trials. Results depend on workload and environment.
-
-```bash
-npx --yes --package=@velocityai/velocity@0.1.3 velocity bench-ci \
-  --profiles regional --repeats 3 --seed 42 --fail-on-regression
-```
-
-[Benchmark code](https://github.com/AlexanderHabscheid/velocity/blob/main/src/bench-metrics.ts) · [CI benchmark workflow](https://github.com/AlexanderHabscheid/velocity/actions/workflows/velocity-bench.yml)
-
-</details>
+[Quickstart](https://github.com/AlexanderHabscheid/velocity/blob/main/docs/first-15-minutes.md) · [Benchmark](https://github.com/AlexanderHabscheid/velocity#ci-gate)
